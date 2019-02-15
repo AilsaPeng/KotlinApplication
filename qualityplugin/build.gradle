@@ -1,0 +1,19 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    testImplementation 'junit:junit:4.12'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'quality.plugin'
+            pom.artifactId = 'quality-plugin'
+            pom.version = '1.0.0-SNAPSHOT'
+            repository(url: uri('../release'))
+        }
+    }
+}
